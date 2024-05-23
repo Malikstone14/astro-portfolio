@@ -14,7 +14,7 @@
     "start": "astro dev",
     "predeploy": "npm run build",
     "check-dist": "dir dist",
-    "deploy": "npm run check-dist && gh-pages -d dist --verbose"
+    "deploy": "npm run check-dist && gh-pages -d dist"
   },
   "dependencies": {
     "@astrojs/react": "^3.1.0",
