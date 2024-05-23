@@ -1,36 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import moment from 'moment-timezone';
-import 'moment/locale/fr'; // Import de la locale française
+import React, { useState, useEffect } from 'react'
+import moment from 'moment-timezone'
 
-const TimeZoneV2 = ({ timezone }) => {
-  const [dateTime, setDateTime] = useState('');
+const Timezone = ({ timezone }: any) => {
+  const [dateTime, setDateTime] = useState('')
 
   useEffect(() => {
-    moment.locale('fr'); // Définir la locale française ici
+    const interval = setInterval(() => {
+      const now = moment().tz(timezone)
+      setDateTime(now.format('l LT'))
+    }, 1000)
 
-    const updateDateTime = () => {
-      const now = moment().tz(timezone);
-      setDateTime(now.format('l LT'));
-    };
-
-    // Mise à jour initiale
-    updateDateTime();
-
-    // Mettre à jour chaque seconde
-    const interval = setInterval(updateDateTime, 1000);
-
-    // Nettoyer l'intervalle lorsqu'on démonte le composant
-    return () => clearInterval(interval);
-  }, [timezone]);
+    return () => clearInterval(interval)
+  }, [timezone])
 
   return (
     <div>
       <p>{dateTime}</p>
       <p className="text-sm text-gray-500">Montréal, QC-Canada</p>
     </div>
-  );
-};
+  )
+}
 
-export default TimeZoneV2;
-
-
+export default Timezone
