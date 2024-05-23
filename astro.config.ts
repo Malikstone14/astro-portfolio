@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind'
 
 // https://astro.build/config
 export default defineConfig({
+  outDir: 'dist',
   site: process.env.CI
     ? 'https://astro-shadcn-ui-template.vercel.app'
     : 'http://localhost:4321',
